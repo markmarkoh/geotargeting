@@ -69,6 +69,28 @@ td { vertical-align: top; }
 
 
 
+svg {
+  width: 1280px;
+  height: 800px;
+  pointer-events: all;
+}
+
+circle {
+  fill: #dbe4f0;
+}
+
+path {
+  fill: #aaa;
+  stroke: #fff;
+  stroke-width: 0;
+}
+
+.arc {
+  stroke-width: 1px;
+  stroke: #BADA55;
+  fill: none;
+}
+
 
 
 
