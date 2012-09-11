@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Animated Bézier Curves - Jason Davies</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/libs/jquery-1.7.1.js"></script>
+    <script src="/js/libs/d3.v2.js"></script>
+    <meta name="author" content="Jason Davies">
+    <style>
+      .curve, .line {
+        fill: none;
+        stroke-width: 1px;
+      }
+      .curve {
+        stroke: red;
+        stroke-width: 3px;
+      }
+      .control {
+        fill: #ccc;
+        stroke: #000;
+        stroke-width: .5px;
+      }
+      .t, .controltext {
+        font-size: .6em;
+      }
+      svg { float: left;}
+    </style>
+  </head>
+  <body>
+    <h1>Animated Bézier Curves</h1>
+    <p>Play with the control points to modify the curves!</p>
+    <div id="vis">
+      <script src="/js/animated-bezier.js"></script>
+    </div>
+  </body>
+</html>
+<p class="copyright">&copy; <a href="http://www.jasondavies.com/">Jason Davies</a> 2012.

@@ -80,10 +80,11 @@ circle {
 }
 
 path {
-  fill: #aaa;
-  stroke: #fff;
+  fill: none;
+  stroke: #222;
   stroke-width: 0;
 }
+
 
 .arc {
   stroke-width: 1px;
