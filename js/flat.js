@@ -44,13 +44,15 @@
     .append("svg:g")
       .attr("id", "states");
 
-  d3.json("/js/world-countries.json", function(json) {
+  d3.json("js/world-countries.json", function(json) {
     g.selectAll("path")
         .data(json.features)
       .enter().append("svg:path")
         .attr("d", path)
         .style("fill", "#DDD")
         .on("click", click);
+
+    startAnimation();
 
   });
 
@@ -274,41 +276,43 @@ function colour(d, i) {
   //houston
   //hostCoords = {longitude: -95.22, latitude: 29.45};
 
-  if (navigator.geolocation) {
+  function startAnimation() {
+    if (navigator.geolocation) {
 
-      navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function(position) {
 
-        console.log(position);
-          target(position.coords);
+          console.log(position);
+            target(position.coords);
 
-          //save
-          targetCoords = position.coords;
-
-          window.setTimeout(function() {
-
-            target(hostCoords, true);
-
+            //save
+            targetCoords = position.coords;
 
             window.setTimeout(function() {
-              d3.selectAll("line")
-                .transition()
-                .duration(700)
-                .attr("opacity", 0);
+
+              target(hostCoords, true);
+
 
               window.setTimeout(function() {
-                drawArc(hostCoords, targetCoords);
-                drawArc(hostCoords, targetCoords, true);
-              }, 1500);
-            }, 6000);
+                d3.selectAll("line")
+                  .transition()
+                  .duration(700)
+                  .attr("opacity", 0);
 
-          },600);
+                window.setTimeout(function() {
+                  drawArc(hostCoords, targetCoords);
+                  drawArc(hostCoords, targetCoords, true);
+                }, 1500);
+              }, 6000);
 
-        }, function(err) {
-          alert('please share');
-        });
-  }
-  else {
-    console.log('hey');
+            },600);
+
+          }, function(err) {
+            alert('please share');
+          });
+    }
+    else {
+      console.log('hey');
+    }
   }
 
 })();
