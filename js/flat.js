@@ -1,9 +1,9 @@
 (function() {
+  var $el = $('#body');
   var width = 1200,
-      height = 800,
+      height = 900,
       centered;
-
-  var projection = projector = d3.geo.equirectangular()
+  var projection = projector = d3.geo.mercator()
       .scale(width)
       .translate([0, 0]);
 
@@ -49,7 +49,9 @@
         .data(json.features)
       .enter().append("svg:path")
         .attr("d", path)
-        .style("fill", "#DDD")
+        .style("fill", "#CCC")
+        .style('stroke-width', 0.1)
+        .style('stroke', '#555')
         .on("click", click);
 
     startAnimation();
@@ -171,7 +173,6 @@ function drawArc (startCoords, endCoords, light) {
   var sourceXY = projector([endCoords.longitude, endCoords.latitude]);
   var midpointXY = [((targetXY[0] + sourceXY[0]) / 2), ((targetXY[1] + sourceXY[1]) / 2)];
 
-console.log(sourceXY, targetXY);
   var w = 250,
     h = 300,
     t = 1,
@@ -184,7 +185,6 @@ console.log(sourceXY, targetXY);
     orders = [3];
 bezier = {};
 
-console.log(points);
 
 var lC = d3.select("#states")
   .append("svg:path")
@@ -198,7 +198,6 @@ var lC = d3.select("#states")
 
 var i = 1;
 d3.timer(function(d) {
-  console.log(i);
       lC.data([getCurve(3)[0].slice(0, i)])
       .attr("d", line);
   i += 3;
@@ -272,7 +271,7 @@ function colour(d, i) {
   //austin
   //hostCoords = {longitude: -97.42, latitude: 30.42};
   //talahasee
-  //hostCoords = {longitude: -81.32, latitude: 25.9};
+  hostCoords = {longitude: -81.32, latitude: 25.9};
   //houston
   //hostCoords = {longitude: -95.22, latitude: 29.45};
 
